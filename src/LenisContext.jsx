@@ -1,4 +1,3 @@
-// src/LenisContext.js
 import { createContext, useContext, useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 
@@ -10,24 +9,32 @@ export const LenisProvider = ({ children }) => {
   const [lenisInstance, setLenisInstance] = useState(null);
 
   useEffect(() => {
+    const isReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
-      smooth: true,
-      smoothTouch: true,
-      touchMultiplier: 2,
+      duration: isReduced ? 0.01 : 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: !isReduced,
+      smoothTouch: false, // Retain native, buttery-smooth mobile touch response
+      touchMultiplier: 1.5,
     });
 
     setLenisInstance(lenis);
 
+    let animationFrameId;
     const raf = (time) => {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      animationFrameId = requestAnimationFrame(raf);
     };
 
-    requestAnimationFrame(raf);
+    animationFrameId = requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      lenis.destroy();
+    };
   }, []);
 
   return (

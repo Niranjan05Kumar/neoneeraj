@@ -1,14 +1,34 @@
 import { useEffect, useState } from "react";
-import UseLenis from "./hooks/UseLenis";
-import { Navbar, Hero, Education, Skills, Projects, Contact, Footer } from "./components";
+import {
+  Navbar,
+  Hero,
+  About,
+  Education,
+  Skills,
+  Projects,
+  Contact,
+  Footer,
+} from "./components";
+
+const SectionDivider = () => (
+  <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+    <div className="border-b border-border" />
+  </div>
+);
 
 const App = () => {
-  UseLenis();
-
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
+    const sectionIds = [
+      "home",
+      "about",
+      "education",
+      "skills",
+      "projects",
+      "contact",
+    ];
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -17,19 +37,36 @@ const App = () => {
           }
         });
       },
-      { threshold: 0.6 }
+      {
+        rootMargin: "-15% 0px -65% 0px",
+      }
     );
-    sections.forEach((section) => observer.observe(section));
-    return () => sections.forEach((section) => observer.unobserve(section));
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
+
   return (
-    <div>
-      <Navbar active={activeSection}/>
-      <Hero />
-      <Education />
-      <Skills />
-      <Projects />
-      <Contact />
+    <div className="bg-bg text-text min-h-screen selection:bg-accent selection:text-white">
+      <Navbar active={activeSection} />
+      <main>
+        <Hero />
+        <SectionDivider />
+        <About />
+        <SectionDivider />
+        <Education />
+        <SectionDivider />
+        <Skills />
+        <SectionDivider />
+        <Projects />
+        <SectionDivider />
+        <Contact />
+        <SectionDivider />
+      </main>
       <Footer />
     </div>
   );

@@ -1,75 +1,175 @@
-"use client";
 import { motion } from "framer-motion";
-import { LuExternalLink } from "react-icons/lu";
+import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import ProjectVisual from "./ProjectVisual";
 
-const ProjectCard = ({
-  id,
-  title,
-  description,
-  image,
-  techs,
-  highlights,
-  live,
-  github,
-}) => {
+export const FeaturedProjectCard = ({ project }) => {
+  const { num, title, type, description, techs, highlights, live, github, id, image } = project;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, easing: "easeInOut", type: "spring", stiffness: 200, damping: 15 }}
-      viewport={{ once: true, amount: 0.4 }}
-      whileHover={{ scale: 1.02 }}
-      className="h-auto rounded-xl bg-bg-light border-2 border-border-light shadow-[0_5px_10px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col"
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.4 }}
+      className="group border border-border bg-surface hover:border-accent/60 transition-colors duration-200 relative overflow-hidden"
     >
-      <div className="h-[180px] w-full">
-        <img src={image} alt={title} className="h-[100%] w-full object-cover" />
-      </div>
-      <div className="w-full h-full p-(--padding4) flex flex-col gap-(--gap)">
-        <div className="w-full h-full flex flex-col gap-(--gap)">
-          <h3 className="text-xl font-semibold text-text">{title}</h3>
-          <p className="text-sm text-text-muted w-full">{description}</p>
-          <div className="flex w-full flex-wrap gap-[6px]">
-            {techs.map((tech, ind) => (
-              <h5
-                key={ind}
-                className="bg-bg text-sm text-text-muted px-3 py-[2px] rounded-full border-1 border-(--border-light) flex justify-center"
-              >
-                {tech}
-              </h5>
-            ))}
+      {/* Corner Registration Marks */}
+      <span className="absolute -top-[5px] -left-[5px] font-mono text-xs text-border leading-none select-none">+</span>
+      <span className="absolute -top-[5px] -right-[5px] font-mono text-xs text-border leading-none select-none">+</span>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-8 lg:p-10 items-stretch">
+        {/* Left Info Column */}
+        <div className="lg:col-span-7 flex flex-col justify-between">
+          <div>
+            {/* Index & Type */}
+            <div className="flex items-center gap-3 mb-3">
+              <span className="font-mono text-xs font-bold text-accent tracking-wider">
+                {num} //
+              </span>
+              <span className="px-2 py-0.5 border border-border text-[10px] font-mono text-text-muted uppercase tracking-wider bg-surface-secondary">
+                {type}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-text group-hover:text-accent transition-colors duration-150 mb-3">
+              {title}
+            </h3>
+
+            {/* Description */}
+            <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-6 font-sans">
+              {description}
+            </p>
+
+            {/* Technologies */}
+            <div className="flex flex-wrap gap-1.5 mb-6">
+              {techs.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2.5 py-1 border border-border bg-surface-secondary text-text font-mono text-xs"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Key Technical Highlights */}
+            <div className="space-y-2 mb-8 pt-4 border-t border-border">
+              <span className="block font-mono text-[10px] uppercase text-text-muted tracking-widest mb-2">
+                SYSTEM HIGHLIGHTS
+              </span>
+              {highlights.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-2.5 text-xs text-text-secondary font-mono">
+                  <span className="text-accent mt-0.5">▪</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col w-full">
-            {highlights.map((highlight, ind) => (
-              <h5
-                key={ind}
-                className="text-md text-text py-[2px] flex items-center gap-(--gap2)"
-              >
-                <p className="bg-text w-2 h-2 rounded-full"></p>
-                {highlight}
-              </h5>
-            ))}
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border">
+            <a
+              href={live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/btn px-4 py-2.5 bg-text text-bg hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] font-mono text-xs uppercase tracking-wider font-semibold transition-all duration-150 flex items-center gap-2 cursor-pointer border border-text shadow-sm hover:shadow-[0_4px_16px_rgba(59,130,246,0.35)]"
+            >
+              <span>EXPLORE PROJECT</span>
+              <FiArrowUpRight size={15} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-150" />
+            </a>
+
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/btn px-4 py-2.5 bg-surface text-text hover:border-accent hover:text-accent hover:bg-surface-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] font-mono text-xs uppercase tracking-wider border border-border transition-all duration-150 flex items-center gap-2 cursor-pointer"
+            >
+              <FiGithub size={15} className="group-hover/btn:scale-110 transition-transform duration-150" />
+              <span>SOURCE CODE</span>
+            </a>
           </div>
         </div>
 
-        <div className="flex gap-(--gap2) mt-auto">
-          <a
-            href={live}
-            className="text-bg bg-text hover:bg-text-muted duration-500 px-[12px] py-[5px] rounded-sm flex gap-(--gap) items-center"
-            target="_blank"
-          >
-            <LuExternalLink className="text-bg-dark" /> Live
-          </a>
-          <a
-            href={github}
-            className="text-text bg-bg-light hover:bg-bg duration-500 outline-2 outline-(--border-light) rounded-sm px-[12px] py-[5px]"
-            target="_blank"
-          >
-            GitHub
-          </a>
+        {/* Right Showcase Visual Column */}
+        <div className="lg:col-span-5 flex flex-col justify-center">
+          <ProjectVisual id={id} title={title} image={image} live={live} />
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
-export default ProjectCard;
+export const OtherProjectCard = ({ project }) => {
+  const { num, title, type, description, techs, image, live, github } = project;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.3 }}
+      className="group border border-border bg-surface hover:border-border-light flex flex-col justify-between overflow-hidden"
+    >
+      <div>
+        {/* Project Thumbnail */}
+        {image && (
+          <div className="h-44 w-full overflow-hidden border-b border-border bg-bg-dark relative">
+            <img
+              src={image}
+              alt={title}
+              loading="lazy"
+              className="h-full w-full object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-out"
+            />
+            <div className="absolute top-2 left-2 px-2 py-0.5 bg-bg/80 backdrop-blur-sm border border-border text-[10px] font-mono text-accent">
+              {num}
+            </div>
+          </div>
+        )}
+
+        <div className="p-5">
+          <div className="font-mono text-[10px] text-text-muted uppercase tracking-wider mb-1">
+            {type}
+          </div>
+          <h4 className="font-display text-lg font-bold text-text group-hover:text-accent transition-colors duration-150 mb-2">
+            {title}
+          </h4>
+          <p className="text-text-secondary text-xs leading-relaxed mb-4 line-clamp-3">
+            {description}
+          </p>
+          <div className="flex flex-wrap gap-1 mb-4">
+            {techs.slice(0, 4).map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-0.5 border border-border bg-surface-secondary text-text-muted text-[10px] font-mono"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="p-5 pt-0 border-t border-border mt-auto flex items-center justify-between pt-3 text-xs font-mono">
+        <a
+          href={live}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group/item text-text hover:text-accent hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 flex items-center gap-1 cursor-pointer"
+        >
+          <span>LIVE</span>
+          <FiArrowUpRight size={13} className="group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 transition-transform duration-150" />
+        </a>
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group/item text-text-muted hover:text-text hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 flex items-center gap-1 cursor-pointer"
+        >
+          <FiGithub size={13} className="group-hover/item:scale-110 transition-transform duration-150" />
+          <span>GITHUB</span>
+        </a>
+      </div>
+    </motion.article>
+  );
+};

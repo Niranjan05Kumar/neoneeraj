@@ -1,89 +1,94 @@
-import { navLinks } from "../data";
 import { useState } from "react";
+import { navLinks } from "../data";
 import Sidebar from "./Sidebar";
 import Switch from "./Switch";
-import { motion, useScroll } from "motion/react";
+import { motion, useScroll } from "framer-motion";
 import { useLenis } from "../LenisContext";
-
-const navbarVariants = {
-  hidden: { },
-  visible: {
-    y: 0,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: -8 },
-  visible: { opacity: 1, y: 0, 
-    transition: {
-      type: "spring",
-      bounce: 0.6
-    }
-   },
-};
 
 const Navbar = ({ active }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const lenis = useLenis();
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
     if (lenis) {
       lenis.scrollTo(`#${id}`, {
-        offset: -100,
-        duration: 1.2,
-        easing: (t) => 1 - Math.pow(1 - t, 3),
+        offset: -70,
+        duration: 1.1,
       });
     } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
     }
   };
 
   return (
-    <nav className="fixed left-0 top-0 px-[5vw] lg:px-[15vw] py-(--padding4) select-none flex flex-row justify-between items-center bg-trans-blur">
-      <motion.ul initial="hidden" animate="visible" variants={navbarVariants} className="sm:flex flex-1 sm:gap-(--gap3) md:gap-(--gap4) text-lg hidden ">
-        {navLinks.map((link) => (
-          <motion.li variants={itemVariants} key={link.id}>
-            <a
-              href={`#${link.href}`}
-              onClick={() => scrollToSection(link.href)}
-              className={`hover:text-text duration-300 ease-in ${
-                active === link.id
-                  ? "text-text font-semibold"
-                  : "text-text-muted"
-              }`}
-            >
-              {link.label}
-            </a>
-          </motion.li>
-        ))}
-      </motion.ul>
+    <header className="fixed top-0 left-0 w-full z-50 bg-trans-blur">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 h-16 flex items-center justify-between">
+        {/* Left: Typographic Brand Mark */}
+        <a
+          href="#home"
+          onClick={(e) => scrollToSection(e, "home")}
+          className="group flex items-center gap-2 cursor-pointer focus-visible:outline-none"
+          aria-label="Niranjan Kumar - Home"
+        >
+          <span className="font-display text-base sm:text-lg font-bold tracking-tight text-text group-hover:text-accent transition-colors duration-150">
+            NIRANJAN
+          </span>
+          <span className="font-mono text-xs text-text-muted hidden sm:inline-block border-l border-border pl-2">
+            DEV / SE
+          </span>
+        </a>
 
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} active={active} />
+        {/* Center: Desktop Navigation Links */}
+        <nav
+          className="hidden md:flex items-center gap-6 lg:gap-8"
+          aria-label="Main Navigation"
+        >
+          {navLinks.map((link) => {
+            const isActive = active === link.id;
+            return (
+              <a
+                key={link.id}
+                href={`#${link.href}`}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className={`relative py-1 text-xs lg:text-sm font-medium transition-colors duration-150 cursor-pointer ${
+                  isActive
+                    ? "text-text font-semibold"
+                    : "text-text-muted hover:text-text"
+                }`}
+              >
+                <span>{link.label}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </a>
+            );
+          })}
+        </nav>
 
-      <motion.div
-      initial={{
-        y:-15,
-        opacity:0,
-      }}
-      animate={{
-        y: 0,
-        opacity:1,
-      }}
-      transition={{
-        duration: 0.3,
-        type: "spring",
-      }} >
-        <Switch />
-      </motion.div>
+        {/* Right: Theme Toggle & Mobile Menu */}
+        <div className="flex items-center gap-3">
+          <Switch />
+          <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} active={active} />
+        </div>
+      </div>
+
+      {/* Subtle Scroll Progress Bar */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
-        className="absolute bottom-0 left-0 origin-left w-full h-[2px] bg-text-muted sm:hidden"
+        className="origin-left h-[1.5px] w-full bg-accent/60"
+        aria-hidden="true"
       />
-    </nav>
+    </header>
   );
 };
 

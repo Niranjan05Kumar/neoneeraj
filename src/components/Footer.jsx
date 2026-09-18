@@ -1,79 +1,53 @@
-"use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import ConfettiExplosion from "react-confetti-explosion";
-import { FaChevronDown } from "react-icons/fa";
-import AboutPort from './AboutPort'
-import Exclamation from "./Exclamation";
+import { FiArrowUpRight, FiArrowUp } from "react-icons/fi";
+import { useLenis } from "../LenisContext";
 
 const Footer = () => {
-  const [isExploding, setIsExploding] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
+  const lenis = useLenis();
 
-  const handleSurprise = () => {
-    setIsExploding(true);
-    setTimeout(() => setIsExploding(false), 5000);
+  const scrollToTop = () => {
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
-  const toggleAbout = () => setShowAbout((prev) => !prev);
 
   return (
-    <div className="relative text-center flex flex-col md:flex-row h-fit gap-4 items-center justify-center mx-[5vw] lg:mx-[15vw] py-6 border-t-2 border-(--border-dark)">
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true, amount: 0.5 }}
-        className="text-text-muted flex gap-1 text-sm flex-wrap text-center w-full sm:w-fit justify-center"
-      >
-        <span className="whitespace-nowrap">Glad you dropped by, built with</span> <Exclamation text={"❤️"} /> <span className="whitespace-nowrap">&  powered by passion</span> <Exclamation text={"!"} />
-      </motion.p>
-
-      <div className="flex flex-row gap-4">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.9 }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          viewport={{ once: true, amount: 0.4 }}
-          onClick={handleSurprise}
-          className="cursor-pointer text-sm bg-primary text-white px-4 py-2 rounded-md shadow hover:bg-opacity-90 transition"
-        >
-          🎁 Surprise
-        </motion.button>
-        <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          viewport={{ once: true, amount: 0.4 }}
-          onClick={toggleAbout}
-          className="cursor-pointer text-sm group px-4 py-2 border-2 rounded-md text-text border-border-dark bg-bg-light hover:bg-bg transition flex items-center gap-2"
-        >
-          Under the Hood
-          <motion.span
-            initial={false}
-            animate={{ rotate: showAbout ? 180 : 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="text-sm"
-          >
-            <FaChevronDown />
-          </motion.span>
-        </motion.button>
-      </div>
-
-      {isExploding && (
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <ConfettiExplosion
-            force={1.8}
-            duration={5000}
-            particleCount={400}
-            width={500}
-            zIndex={999}
-          />
+    <footer className="py-12 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto font-mono text-xs text-text-muted">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-border">
+        {/* Left: Identity */}
+        <div>
+          <div className="font-display text-sm font-bold text-text uppercase tracking-tight">
+            NIRANJAN KUMAR
+          </div>
+          <div className="text-[11px] text-text-muted mt-0.5">
+            IIT (BHU) VARANASI
+          </div>
         </div>
-      )}
-      <AboutPort showAbout={showAbout} />
-    </div>
+
+        {/* Center: Stack & Copyright */}
+        <div className="text-left md:text-center">
+          <div>Built with React &amp; JavaScript</div>
+          <div className="text-[11px] text-text-muted mt-0.5">
+            &copy; {new Date().getFullYear()} Niranjan Kumar. All rights reserved.
+          </div>
+        </div>
+
+        {/* Right: Quick External Links + Back to Top */}
+        <div className="flex items-center gap-5">
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="group px-3 py-1.5 border border-border bg-surface text-text-secondary hover:border-accent hover:text-accent hover:bg-surface-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-all duration-150 cursor-pointer"
+            title="Scroll to top"
+            aria-label="Scroll to top"
+          >
+            <span>SCROLL TO TOP</span>
+            <FiArrowUp size={13} className="group-hover:-translate-y-0.5 transition-transform duration-150" />
+          </button>
+        </div>
+      </div>
+    </footer>
   );
 };
 
