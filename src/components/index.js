@@ -4,6 +4,7 @@ import About from "./About";
 import Education from "./Education";
 import Skills from "./Skills";
 import Projects from "./Projects";
+import Achievements from "./Achievements";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import Switch from "./Switch";
@@ -17,6 +18,7 @@ export {
   Education,
   Skills,
   Projects,
+  Achievements,
   Contact,
   Footer,
   Switch,

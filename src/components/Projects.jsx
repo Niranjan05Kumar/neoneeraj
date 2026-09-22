@@ -23,7 +23,7 @@ export default function Projects() {
       {/* Editorial Section Header */}
       <div className="flex items-center gap-4 mb-16">
         <span className="font-mono text-xs sm:text-sm font-semibold text-accent tracking-widest uppercase">
-          04 / PROJECTS
+          05 / PROJECTS
         </span>
         <div className="h-[1px] flex-1 bg-border" />
       </div>
@@ -53,11 +53,10 @@ export default function Projects() {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setActiveCategory(cat)}
-                className={`transition-colors duration-150 relative pb-1 uppercase cursor-pointer ${
-                  isSelected
+                className={`transition-colors duration-150 relative pb-1 uppercase cursor-pointer ${isSelected
                     ? "text-accent font-semibold"
                     : "text-text-muted hover:text-text"
-                }`}
+                  }`}
               >
                 <span>{cat}</span>
                 {isSelected && (

@@ -38,7 +38,7 @@ const Contact = () => {
       {/* Editorial Section Header */}
       <div className="flex items-center gap-4 mb-16">
         <span className="font-mono text-xs sm:text-sm font-semibold text-accent tracking-widest uppercase">
-          05 / CONTACT
+          07 / CONTACT
         </span>
         <div className="h-[1px] flex-1 bg-border" />
       </div>

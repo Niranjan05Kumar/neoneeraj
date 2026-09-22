@@ -48,7 +48,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] flex flex-col justify-between pt-28 pb-12 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto technical-grid"
+      className="relative min-h-[92vh] flex flex-col justify-between pt-36 pb-12 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto technical-grid"
     >
       <motion.div
         variants={containerVariants}
@@ -82,8 +82,6 @@ const Hero = () => {
           >
             <span>FULL STACK DEVELOPER</span>
             <span className="text-border">/</span>
-            <span>PROBLEM SOLVER</span>
-            <span className="text-border">/</span>
             <span>C++ & DSA</span>
           </motion.div>
 
@@ -92,10 +90,10 @@ const Hero = () => {
             variants={itemVariants}
             className="text-text-secondary text-sm sm:text-base max-w-2xl leading-relaxed mb-8 font-sans"
           >
-            I'm a Full Stack Developer skilled in React, TypeScript, Node.js,
-            and modern databases, with a strong foundation in Data Structures &
-            Algorithms using C++. I design scalable architectures, build
-            high-performance web systems, and write clean, resilient code.
+            I'm a Full-Stack Developer focused on building practical web applications with
+            <span className="text-text"> React, TypeScript, Node.js, &amp; MongoDB.</span> I also work with
+            <span className="text-text"> C++ and Data Structures & Algorithms </span>
+            to strengthen my problem-solving skills.
           </motion.p>
 
           {/* 5. Sharp Rectangular Action Buttons */}
@@ -111,7 +109,7 @@ const Hero = () => {
               <span>VIEW PROJECTS</span>
               <FiArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
             </button>
-            
+
             <a
               href="https://github.com/niranjan05Kumar"
               target="_blank"
@@ -140,71 +138,46 @@ const Hero = () => {
           variants={itemVariants}
           className="lg:col-span-4 w-full"
         >
-          <div className="border border-border bg-surface/80 p-6 relative">
+          <div className="border border-border bg-surface/80 p-8 sm:p-10 relative font-mono text-xs">
             {/* Technical Corner Markers */}
             <span className="absolute -top-[5px] -left-[5px] font-mono text-xs text-border leading-none">+</span>
             <span className="absolute -top-[5px] -right-[5px] font-mono text-xs text-border leading-none">+</span>
             <span className="absolute -bottom-[5px] -left-[5px] font-mono text-xs text-border leading-none">+</span>
             <span className="absolute -bottom-[5px] -right-[5px] font-mono text-xs text-border leading-none">+</span>
 
-            {/* Status Header */}
-            <div className="flex items-center justify-between border-b border-border pb-4 mb-4">
-              <span className="font-mono text-[11px] text-text-muted tracking-widest uppercase">
-                STATUS / AVAILABILITY
-              </span>
-              <span className="inline-flex items-center gap-2 font-mono text-[11px] text-accent">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-                </span>
-                OPEN TO ROLES
-              </span>
+            {/* 1. Academic Information */}
+            <div className="space-y-1.5 pb-5 border-b border-border">
+              <div className="font-semibold text-text text-sm tracking-wider uppercase">
+                IIT (BHU) VARANASI
+              </div>
+              <div className="text-text-secondary text-xs">
+                B.Tech — Mining Engineering
+              </div>
+              <div className="text-text-muted text-xs tracking-wider">
+                2023 — PRESENT
+              </div>
             </div>
 
-            {/* Metadata Rows */}
-            <div className="space-y-4 font-mono text-xs">
-              <div>
-                <span className="block text-text-muted uppercase text-[10px] tracking-wider">
-                  01 // INSTITUTION
-                </span>
-                <span className="text-text font-medium">
-                  IIT (BHU) VARANASI
-                </span>
-              </div>
+            {/* 2. Core Focus Stack */}
+            <div className="py-5 border-b border-border text-xs tracking-wider text-text-secondary flex flex-wrap items-center gap-2">
+              <span>MERN</span>
+              <span className="text-accent">·</span>
+              <span>TYPESCRIPT</span>
+              <span className="text-accent">·</span>
+              <span>C++</span>
+              <span className="text-accent">·</span>
+              <span>DSA</span>
+            </div>
 
-              <div>
-                <span className="block text-text-muted uppercase text-[10px] tracking-wider">
-                  02 // DEGREE & STREAM
-                </span>
-                <span className="text-text font-medium">
-                  B.Tech — Mining Engineering
-                </span>
-              </div>
-
-              <div>
-                <span className="block text-text-muted uppercase text-[10px] tracking-wider">
-                  03 // TIMELINE
-                </span>
-                <span className="text-text font-medium">
-                  2023 — PRESENT
-                </span>
-              </div>
-
-              <div className="pt-3 border-t border-border">
-                <span className="block text-text-muted uppercase text-[10px] tracking-wider mb-2">
-                  04 // CORE FOCUS STACK
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {["MERN", "TYPESCRIPT", "C++", "DSA"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 border border-border text-[11px] text-text-secondary bg-surface-secondary"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            {/* 3. Availability Status */}
+            <div className="pt-5 flex items-center gap-2 text-accent text-xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+              </span>
+              <span className="tracking-wider uppercase font-semibold">
+                OPEN TO ROLES
+              </span>
             </div>
           </div>
         </motion.div>
@@ -217,8 +190,8 @@ const Hero = () => {
         transition={{ delay: 0.8, duration: 0.6 }}
         className="mt-12 pt-6 border-t border-border flex items-center justify-between text-xs font-mono text-text-muted"
       >
-        <span className="tracking-widest uppercase">
-          PORTFOLIO ARCHIVE // 2026
+        <span className="tracking-widest uppercase text-base">
+          WORK // 2026
         </span>
         <button
           type="button"

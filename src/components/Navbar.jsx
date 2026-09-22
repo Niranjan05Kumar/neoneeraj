@@ -36,7 +36,7 @@ const Navbar = ({ active }) => {
           className="group flex items-center gap-2 cursor-pointer focus-visible:outline-none"
           aria-label="Niranjan Kumar - Home"
         >
-          <span className="font-display text-base sm:text-lg font-bold tracking-tight text-text group-hover:text-accent transition-colors duration-150">
+          <span className="font-display text-2xl sm:text-xl font-bold tracking-tight text-text group-hover:text-accent transition-colors duration-150">
             NIRANJAN
           </span>
           <span className="font-mono text-xs text-text-muted hidden sm:inline-block border-l border-border pl-2">
@@ -46,7 +46,7 @@ const Navbar = ({ active }) => {
 
         {/* Center: Desktop Navigation Links */}
         <nav
-          className="hidden md:flex items-center gap-6 lg:gap-8"
+          className="hidden md:flex items-center gap-4 lg:gap-7"
           aria-label="Main Navigation"
         >
           {navLinks.map((link) => {

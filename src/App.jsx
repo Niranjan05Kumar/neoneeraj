@@ -6,6 +6,7 @@ import {
   Education,
   Skills,
   Projects,
+  Achievements,
   Contact,
   Footer,
 } from "./components";
@@ -26,6 +27,7 @@ const App = () => {
       "education",
       "skills",
       "projects",
+      "achievements",
       "contact",
     ];
 
@@ -50,8 +52,26 @@ const App = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Simple, non-aggressive copy prevention for static portfolio content
+  useEffect(() => {
+    const handleCopy = (e) => {
+      const target = e.target;
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        (target instanceof HTMLElement && target.isContentEditable)
+      ) {
+        return;
+      }
+      e.preventDefault();
+    };
+
+    document.addEventListener("copy", handleCopy);
+    return () => document.removeEventListener("copy", handleCopy);
+  }, []);
+
   return (
-    <div className="bg-bg text-text min-h-screen selection:bg-accent selection:text-white">
+    <div className="bg-bg text-text min-h-screen select-none">
       <Navbar active={activeSection} />
       <main>
         <Hero />
@@ -63,6 +83,8 @@ const App = () => {
         <Skills />
         <SectionDivider />
         <Projects />
+        <SectionDivider />
+        <Achievements />
         <SectionDivider />
         <Contact />
         <SectionDivider />

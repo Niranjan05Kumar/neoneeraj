@@ -30,9 +30,9 @@ const Sidebar = ({ isOpen, setIsOpen, active }) => {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
-        className="flex items-center justify-center p-2 text-text border border-border bg-surface hover:border-accent transition-colors duration-150 cursor-pointer"
+        className="w-9 h-9 shrink-0 flex items-center justify-center text-text border border-border bg-surface hover:border-accent hover:text-accent transition-colors duration-150 cursor-pointer"
       >
-        {isOpen ? <RiCloseLine size={20} /> : <RiMenu4Line size={20} />}
+        {isOpen ? <RiCloseLine size={19} /> : <RiMenu4Line size={19} />}
       </button>
 
       {/* Drawer Overlay + Panel */}
@@ -60,9 +60,9 @@ const Sidebar = ({ isOpen, setIsOpen, active }) => {
             >
               <div className="flex items-center justify-between border-b border-border pb-3">
                 <span className="text-xs font-mono tracking-widest text-text-muted uppercase">
-                  NAVIGATION / INDEX
+                  INDEX
                 </span>
-                <span className="text-xs font-mono text-accent">01 — 05</span>
+                <span className="text-xs font-mono text-accent">00 — 06</span>
               </div>
 
               <ul className="flex flex-col gap-3">
@@ -83,7 +83,7 @@ const Sidebar = ({ isOpen, setIsOpen, active }) => {
                           {link.label}
                         </span>
                         <span className="font-mono text-xs text-text-muted">
-                          0{idx + 1}
+                          0{idx}
                         </span>
                       </button>
                     </li>

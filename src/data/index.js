@@ -15,6 +15,11 @@ import LocationIcon from "../assets/location.svg?react";
 
 export const navLinks = [
   {
+    id: "home",
+    label: "Home",
+    href: "home",
+  },
+  {
     id: "about",
     label: "About",
     href: "about",
@@ -35,6 +40,11 @@ export const navLinks = [
     href: "projects",
   },
   {
+    id: "achievements",
+    label: "Achievements",
+    href: "achievements",
+  },
+  {
     id: "contact",
     label: "Contact",
     href: "contact",
@@ -45,7 +55,7 @@ export const education = {
   primary: {
     degree: "Bachelor of Technology",
     stream: "Mining Engineering",
-    institute: "Indian Institute of Technology (BHU), Varanasi",
+    institute: "Indian Institute of Technology (BHU) Varanasi",
     timeline: "2023 — Present",
     score: "6.80 CGPA",
     details:
@@ -128,7 +138,7 @@ export const skillCategories = [
   {
     id: "databases",
     category: "DATABASES",
-    skills: ["MongoDB", "Mongoose", "PostgreSQL"],
+    skills: ["MongoDB", "PostgreSQL"],
   },
   {
     id: "auth-security",
@@ -138,7 +148,7 @@ export const skillCategories = [
   {
     id: "tools",
     category: "TOOLS & DEPLOYMENT",
-    skills: ["Git", "GitHub", "Docker", "Vercel", "Cloudinary", "VS Code", "ImageKit"],
+    skills: ["Git", "GitHub", "Docker", "Vercel", "Cloudinary", "VS Code", "Antigravity", "ImageKit"],
   },
 ];
 
