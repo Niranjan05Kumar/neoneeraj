@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLenis } from "./LenisContext";
 import {
   Navbar,
   Hero,
@@ -19,6 +20,7 @@ const SectionDivider = () => (
 
 const App = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const lenis = useLenis();
 
   useEffect(() => {
     const sectionIds = [
@@ -31,26 +33,62 @@ const App = () => {
       "contact",
     ];
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-15% 0px -65% 0px",
+    const updateActiveSection = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // If near the bottom of the page, ensure the last section ("contact") is active
+      if (windowHeight + scrollY >= documentHeight - 80) {
+        setActiveSection("contact");
+        return;
       }
-    );
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+      // Determine active section based on top offset relative to viewport
+      const headerOffset = 160;
+      let currentSection = sectionIds[0];
 
-    return () => observer.disconnect();
-  }, []);
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= headerOffset) {
+            currentSection = id;
+          }
+        }
+      }
+
+      setActiveSection(currentSection);
+    };
+
+    updateActiveSection();
+
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    if (lenis) {
+      lenis.on("scroll", onScroll);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (lenis) {
+        lenis.off("scroll", onScroll);
+      }
+    };
+  }, [lenis]);
 
   // Simple, non-aggressive copy prevention for static portfolio content
   useEffect(() => {

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { FiX } from "react-icons/fi";
 
-const Toast = ({ show, message }) => {
+const Toast = ({ show, message, onClose }) => {
   return (
     <AnimatePresence>
       {show && (
@@ -13,7 +14,17 @@ const Toast = ({ show, message }) => {
           role="status"
           aria-live="polite"
         >
-          {message}
+          <div className="flex-1">{message}</div>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              className="p-1 -mr-1 text-text-muted hover:text-text hover:bg-surface-hover transition-colors duration-150 cursor-pointer flex items-center justify-center border border-transparent hover:border-border"
+              aria-label="Close notification"
+            >
+              <FiX size={14} />
+            </button>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

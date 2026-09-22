@@ -71,14 +71,14 @@ export default function Projects() {
       {/* 1. FEATURED WORK */}
       {featured.length > 0 && (
         <div className="mb-20">
-          <div className="flex items-center justify-between border-b border-border pb-3 mb-8">
+          <div className="flex items-center justify-between border-b border-border pb-3 mb-18">
             <span className="font-mono text-xs font-semibold text-text uppercase tracking-widest">
               FEATURED WORK // 01 — 03
             </span>
             <span className="font-mono text-xs text-accent">PRIMARY FOCUS</span>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-24">
             {featured.map((proj) => (
               <FeaturedProjectCard key={proj.id} project={proj} />
             ))}
@@ -88,15 +88,15 @@ export default function Projects() {
 
       {/* 2. OTHER PROJECTS */}
       {other.length > 0 && (
-        <div className="pt-8 border-t border-border">
-          <div className="flex items-center justify-between border-b border-border pb-3 mb-8">
+        <div className="pt-8">
+          <div className="flex items-center justify-between border-b border-border pb-3 mb-16">
             <span className="font-mono text-xs font-semibold text-text-muted uppercase tracking-widest">
               OTHER PROJECTS // 04 — 06
             </span>
             <span className="font-mono text-xs text-text-muted">UI & FRONTEND FOUNDATIONS</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 gap-14">
             {other.map((proj) => (
               <OtherProjectCard key={proj.id} project={proj} />
             ))}

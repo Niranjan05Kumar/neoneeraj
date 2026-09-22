@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiArrowUpRight, FiDownload, FiCheckCircle } from "react-icons/fi";
+import { FiArrowUpRight, FiDownload, FiCheckCircle, FiGithub } from "react-icons/fi";
 import { useLenis } from "../LenisContext";
 import Toast from "./Toast";
 
@@ -117,7 +117,7 @@ const Hero = () => {
               className="group px-5 py-3 bg-surface text-text font-mono text-xs sm:text-sm uppercase tracking-wider border border-border hover:border-accent hover:text-accent hover:bg-surface-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>GITHUB</span>
-              <FiArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
+              <FiGithub size={16} className="group-hover:scale-110 transition-transform duration-150" />
             </a>
 
             <a
@@ -206,6 +206,7 @@ const Hero = () => {
       {/* Toast Notification for Resume Download */}
       <Toast
         show={showToast}
+        onClose={() => setShowToast(false)}
         message={
           <span className="flex items-center gap-2 text-text">
             <FiCheckCircle className="text-accent" size={16} />

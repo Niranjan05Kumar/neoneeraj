@@ -3,7 +3,7 @@ import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 import ProjectVisual from "./ProjectVisual";
 
 export const FeaturedProjectCard = ({ project }) => {
-  const { num, title, type, description, techs, highlights, live, github, id, image } = project;
+  const { num, title, type, description, techs, live, github, id, image } = project;
 
   return (
     <motion.article
@@ -22,7 +22,7 @@ export const FeaturedProjectCard = ({ project }) => {
         <div className="lg:col-span-7 flex flex-col justify-between">
           <div>
             {/* Index & Type */}
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-6">
               <span className="font-mono text-xs font-bold text-accent tracking-wider">
                 {num} //
               </span>
@@ -32,17 +32,17 @@ export const FeaturedProjectCard = ({ project }) => {
             </div>
 
             {/* Title */}
-            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-text group-hover:text-accent transition-colors duration-150 mb-3">
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-text group-hover:text-accent transition-colors duration-150 mb-6">
               {title}
             </h3>
 
             {/* Description */}
-            <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-6 font-sans">
+            <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-8 font-sans">
               {description}
             </p>
 
             {/* Technologies */}
-            <div className="flex flex-wrap gap-1.5 mb-6">
+            <div className="flex flex-wrap gap-1.5 mb-10">
               {techs.map((tech) => (
                 <span
                   key={tech}
@@ -52,28 +52,15 @@ export const FeaturedProjectCard = ({ project }) => {
                 </span>
               ))}
             </div>
-
-            {/* Key Technical Highlights */}
-            <div className="space-y-2 mb-8 pt-4 border-t border-border">
-              <span className="block font-mono text-[10px] uppercase text-text-muted tracking-widest mb-2">
-                SYSTEM HIGHLIGHTS
-              </span>
-              {highlights.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs text-text-secondary font-mono">
-                  <span className="text-accent mt-0.5">▪</span>
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border">
+          <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-border">
             <a
               href={live}
               target="_blank"
               rel="noopener noreferrer"
-              className="group/btn px-4 py-2.5 bg-text text-bg hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] font-mono text-xs uppercase tracking-wider font-semibold transition-all duration-150 flex items-center gap-2 cursor-pointer border border-text shadow-sm hover:shadow-[0_4px_16px_rgba(59,130,246,0.35)]"
+              className="group/btn px-3 py-2.5 bg-text text-bg hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] font-mono text-xs uppercase tracking-wider font-semibold transition-all duration-150 flex items-center gap-2 cursor-pointer border border-text shadow-sm hover:shadow-[0_4px_16px_rgba(59,130,246,0.35)]"
             >
               <span>EXPLORE PROJECT</span>
               <FiArrowUpRight size={15} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-150" />
@@ -83,7 +70,7 @@ export const FeaturedProjectCard = ({ project }) => {
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group/btn px-4 py-2.5 bg-surface text-text hover:border-accent hover:text-accent hover:bg-surface-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] font-mono text-xs uppercase tracking-wider border border-border transition-all duration-150 flex items-center gap-2 cursor-pointer"
+              className="group/btn px-3 py-2.5 bg-surface text-text hover:border-accent hover:text-accent hover:bg-surface-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] font-mono text-xs uppercase tracking-wider border border-border transition-all duration-150 flex items-center gap-2 cursor-pointer"
             >
               <FiGithub size={15} className="group-hover/btn:scale-110 transition-transform duration-150" />
               <span>SOURCE CODE</span>

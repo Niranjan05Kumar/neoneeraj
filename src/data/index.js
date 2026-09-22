@@ -161,14 +161,8 @@ export const projects = [
     type: "FULL STACK / REAL-TIME / AI",
     featured: true,
     description:
-      "Real-time collaborative code editor with AI-assisted developer workflows, low-latency document sync, and containerized execution.",
+      "Real-time collaborative code editor with AI-assisted development workflows, enabling multi-user code synchronization and intelligent coding support.",
     techs: ["React", "TypeScript", "Node.js", "Express", "Socket.IO", "PostgreSQL", "Redis", "Docker"],
-    highlights: [
-      "Real-time multi-user document synchronization via Socket.IO",
-      "AI-assisted developer completions & workflow assistance",
-      "Isolated containerized execution environment powered by Docker",
-      "High-throughput caching & state persistence with Redis and PostgreSQL",
-    ],
     live: "https://code-sync-ai-tan.vercel.app/",
     github: "https://github.com/niranjan05Kumar/codesync-ai",
     image: codesync,
@@ -182,13 +176,8 @@ export const projects = [
     type: "DSA / ALGORITHMS / INTERACTIVE",
     featured: true,
     description:
-      "A DSA-focused interactive engine for exploring data structures, algorithmic execution traces, and problem-solving concepts.",
+      "Interactive platform for exploring data structures and algorithms through step-by-step execution visualization and interactive problem-solving workflows.",
     techs: ["React", "TypeScript", "C++", "Algorithms", "Data Structures"],
-    highlights: [
-      "Step-by-step visual execution trace for graph, tree, and sorting algorithms",
-      "Interactive data structure mutation, state inspection, and complexity graphs",
-      "Core algorithmic problem-solving logic implemented with strict time constraints",
-    ],
     live: "https://pathforge-dwlz.onrender.com/",
     github: "https://github.com/niranjan05Kumar/pathforge",
     image: pathforge,
@@ -202,13 +191,8 @@ export const projects = [
     type: "FULL STACK / ARCHIVE / CMS",
     featured: true,
     description:
-      "A full-stack digital archive and management platform for documenting IIT (BHU) Hockey's players, teams, tournaments, matches, achievements, and gallery.",
+      "Full-stack digital archive for IIT (BHU) Hockey, providing structured management of players, teams, tournaments, matches, achievements, and media.",
     techs: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Mongoose", "ImageKit", "JWT", "Zod"],
-    highlights: [
-      "Full CRUD records management for players, tournaments, rosters, and match logs",
-      "ImageKit-backed media archive and tournament gallery management",
-      "Role-based admin access control with JWT authentication and Zod schema validation",
-    ],
     live: "https://hockeyiitbhu.vercel.app/",
     github: "https://github.com/Niranjan05Kumar/HOCKEYIITBHU",
     image: hockeyiitbhu,
@@ -224,7 +208,7 @@ export const projects = [
     image: obysagency,
     description:
       "Animated Obys agency clone engineered with GSAP, Locomotive Scroll, and magnetic cursor interactions showcasing creative web experiences.",
-    techs: ["HTML5", "CSS3", "JavaScript", "GSAP", "Locomotive Scroll"],
+    techs: ["HTML5", "CSS3", "JavaScript", "GSAP"],
     highlights: [
       "Precise scroll-based micro-interactions and timeline triggers",
       "Physics-based magnetic button animations",
@@ -275,14 +259,6 @@ export const projects = [
 
 export const socialMedia = [
   {
-    id: "email",
-    label: "Email",
-    value: "niranjankumar11082005@gmail.com",
-    href: "mailto:niranjankumar11082005@gmail.com",
-    icon: MailIcon,
-    copyable: true,
-  },
-  {
     id: "github",
     label: "GitHub",
     value: "github.com/niranjan05Kumar",
@@ -300,18 +276,10 @@ export const socialMedia = [
   },
   {
     id: "twitter",
-    label: "X (Twitter)",
+    label: "X/Twitter",
     value: "@05niranjankumar",
     href: "https://x.com/05niranjankumar",
     icon: TwitterIcon,
-    copyable: false,
-  },
-  {
-    id: "location",
-    label: "Location",
-    value: "IIT (BHU) Varanasi, India",
-    href: "https://www.google.com/maps/place/Indian+Institute+of+Technology+(BHU)+Varanasi/@25.2677,82.9913,17z",
-    icon: LocationIcon,
     copyable: false,
   },
 ];

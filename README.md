@@ -221,7 +221,24 @@ Portfolio/
    npm install
    ```
 
-3. **Start the local development server**:
+3. **Configure Environment Variables (Contact Form)**:
+   The contact form uses [EmailJS](https://www.emailjs.com/) for direct browser-to-email message delivery without a backend.
+   
+   Copy `.env.example` to create a local `.env` file:
+   ```bash
+   cp .env.example .env
+   ```
+
+   Fill in your actual EmailJS credentials:
+   ```env
+   VITE_EMAILJS_SERVICE_ID=your_service_id_here
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
+   ```
+
+   > **Note**: Your EmailJS template must use the variable names: `{{name}}`, `{{email}}`, `{{subject}}`, and `{{message}}`.
+
+4. **Start the local development server**:
    ```bash
    npm run dev
    ```

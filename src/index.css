@@ -284,10 +284,19 @@ p,
   z-index: 90;
 }
 
-/* Sharp focus visible ring for accessibility */
-:focus-visible {
+/* Sharp focus visible ring for accessibility (excluding form controls which use dedicated border states) */
+:focus-visible:not(input):not(textarea) {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
 }
 
 /* Prefers-reduced-motion: safe scroll fallback without breaking CTA transitions */
