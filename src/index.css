@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @font-face {
@@ -142,7 +141,7 @@
   --bg-transparent: rgba(245, 245, 242, 0.88);
 
   --surface: #ffffff;
-  --surface-secondary: #eeeea;
+  --surface-secondary: #eeeeea;
   --surface-hover: #e8e8e3;
 
   --border: #d7d7d2;

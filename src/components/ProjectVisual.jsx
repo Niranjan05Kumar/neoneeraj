@@ -25,10 +25,20 @@ const PROJECT_META = {
   },
 };
 
+const getSafeDomain = (metaDomain, liveUrl) => {
+  if (metaDomain) return metaDomain;
+  if (!liveUrl) return "production-deployment";
+  try {
+    return new URL(liveUrl).hostname;
+  } catch {
+    return "production-deployment";
+  }
+};
+
 const ProjectVisual = ({ id, title, image, live }) => {
   const meta = PROJECT_META[id] || {};
   const imageSrc = image || meta.image;
-  const domain = meta.domain || (live ? new URL(live).hostname : "production-deployment");
+  const domain = getSafeDomain(meta.domain, live);
   const caption = meta.caption || "PRODUCTION SYSTEM";
 
   return (

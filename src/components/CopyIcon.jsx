@@ -20,7 +20,7 @@ const CopyIcon = ({ text }) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-    } catch (err) {
+    } catch (_err) {
       const textarea = document.createElement("textarea");
       textarea.value = text;
       textarea.setAttribute("readonly", "");
@@ -44,7 +44,12 @@ const CopyIcon = ({ text }) => {
 
   return (
     <StyledWrapper className="h-[36px] rounded-xl shadow-[0_5px_5px_rgba(0,0,0,0.2)] ">
-      <button onClick={handleCopy} className="copy">
+      <button
+        type="button"
+        onClick={handleCopy}
+        className="copy"
+        aria-label={copied ? "Copied" : "Copy to clipboard"}
+      >
         <span
           data-text-end="Copied!"
           data-text-initial="Copy"

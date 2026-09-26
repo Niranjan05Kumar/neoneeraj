@@ -28,7 +28,7 @@ const About = () => {
             <p>
               My current focus is building practical web applications with
               <span className="text-text"> React, TypeScript, Node.js, Express, and MongoDB. </span>
-              Alongside development, I practice <span className="text-text">Data Structures & Algorithms</span> in <span className="text-text"> C++. </span>
+              Alongside development, I practice <span className="text-text">Data Structures & Algorithms</span> in <span className="text-text"> C++ </span>
               to strengthen my problem-solving skills.
             </p>
           </div>

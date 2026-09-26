@@ -3,6 +3,7 @@ import Lenis from "@studio-freight/lenis";
 
 const LenisContext = createContext(null);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useLenis = () => useContext(LenisContext);
 
 export const LenisProvider = ({ children }) => {

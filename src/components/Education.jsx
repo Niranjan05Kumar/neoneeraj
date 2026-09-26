@@ -51,7 +51,7 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="flex justify-between items-center w-[100%] grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 font-mono text-xs">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 font-mono text-xs">
             <div>
               <span className="block text-text-muted uppercase text-[10px] tracking-wider mb-1">
                 DEPARTMENT

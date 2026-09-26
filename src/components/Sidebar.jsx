@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { navLinks } from "../data";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "../LenisContext";
@@ -5,6 +6,25 @@ import { RiCloseLine, RiMenu4Line } from "react-icons/ri";
 
 const Sidebar = ({ isOpen, setIsOpen, active }) => {
   const lenis = useLenis();
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, setIsOpen]);
 
   const handleNavClick = (id) => {
     setIsOpen(false);
@@ -30,6 +50,7 @@ const Sidebar = ({ isOpen, setIsOpen, active }) => {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
+        aria-controls="mobile-navigation-drawer"
         className="w-9 h-9 shrink-0 flex items-center justify-center text-text border border-border bg-surface hover:border-accent hover:text-accent transition-colors duration-150 cursor-pointer"
       >
         {isOpen ? <RiCloseLine size={19} /> : <RiMenu4Line size={19} />}
@@ -52,6 +73,10 @@ const Sidebar = ({ isOpen, setIsOpen, active }) => {
 
             {/* Sharp Editorial Drawer */}
             <motion.aside
+              id="mobile-navigation-drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation"
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}

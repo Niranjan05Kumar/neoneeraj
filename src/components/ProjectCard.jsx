@@ -137,7 +137,7 @@ export const OtherProjectCard = ({ project }) => {
         </div>
       </div>
 
-      <div className="p-5 pt-0 border-t border-border mt-auto flex items-center justify-between pt-3 text-xs font-mono">
+      <div className="p-5 pt-3 border-t border-border mt-auto flex items-center justify-between text-xs font-mono">
         <a
           href={live}
           target="_blank"

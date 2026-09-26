@@ -73,6 +73,13 @@ const Contact = () => {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubmitStatus("error");
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
     // 4. Environment variables check
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;

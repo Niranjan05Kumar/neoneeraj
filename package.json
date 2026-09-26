@@ -16,11 +16,8 @@
     "framer-motion": "^12.19.1",
     "motion": "^12.19.1",
     "react": "^19.1.0",
-    "react-circular-progressbar": "^2.2.0",
-    "react-confetti-explosion": "^3.0.3",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "styled-components": "^6.1.19",
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
