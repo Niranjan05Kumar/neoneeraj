@@ -11,7 +11,7 @@
 
 ## Live Demo
 
-- **Production Deployment**: [View Live Portfolio](https://niranjan05kumar.vercel.app/) *(or your custom deployment URL)*
+- **Live Portfolio**: [https://neoneeraj.in](https://neoneeraj.in)
 - **Repository**: [github.com/Niranjan05Kumar/neoneeraj](https://github.com/Niranjan05Kumar/neoneeraj)
 
 ---
@@ -162,7 +162,7 @@ The portfolio utilizes an editorial technical design system:
 Portfolio/
 ├── public/
 │   ├── fonts/                       # Local Neue Machina web font files (.woff2)
-│   ├── projects/                    # Featured project screenshot assets
+│   ├── projects/                    # Social preview banner (neoneeraj-social-preview.jpg)
 │   ├── favicon.svg                  # Brand favicon
 │   └── Niranjan_Kumar_Resume.pdf    # Direct-download resume
 ├── src/
@@ -244,18 +244,18 @@ Portfolio/
    ```
    Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-4. **Build for production**:
+5. **Build for production**:
    ```bash
    npm run build
    ```
    The production-optimized bundle will be emitted to the `dist/` directory.
 
-5. **Preview production build locally**:
+6. **Preview production build locally**:
    ```bash
    npm run preview
    ```
 
-6. **Lint code**:
+7. **Lint code**:
    ```bash
    npm run lint
    ```
@@ -272,6 +272,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 **Niranjan Kumar**  
 Undergraduate, Indian Institute of Technology (BHU), Varanasi  
+- **Website**: [https://neoneeraj.in](https://neoneeraj.in)  
 - **Email**: [niranjankumar11082005@gmail.com](mailto:niranjankumar11082005@gmail.com)  
 - **LinkedIn**: [linkedin.com/in/niranjan05kumar](https://www.linkedin.com/in/niranjan05kumar/)  
 - **GitHub**: [github.com/Niranjan05Kumar](https://github.com/Niranjan05Kumar)
