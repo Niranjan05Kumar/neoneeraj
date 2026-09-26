@@ -90,26 +90,8 @@ const App = () => {
     };
   }, [lenis]);
 
-  // Simple, non-aggressive copy prevention for static portfolio content
-  useEffect(() => {
-    const handleCopy = (e) => {
-      const target = e.target;
-      if (
-        target instanceof HTMLInputElement ||
-        target instanceof HTMLTextAreaElement ||
-        (target instanceof HTMLElement && target.isContentEditable)
-      ) {
-        return;
-      }
-      e.preventDefault();
-    };
-
-    document.addEventListener("copy", handleCopy);
-    return () => document.removeEventListener("copy", handleCopy);
-  }, []);
-
   return (
-    <div className="bg-bg text-text min-h-screen select-none">
+    <div className="bg-bg text-text min-h-screen">
       <Navbar active={activeSection} />
       <main>
         <Hero />

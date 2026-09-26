@@ -285,10 +285,18 @@ const Contact = () => {
                 <div
                   role="alert"
                   aria-live="assertive"
-                  className="p-3 border border-red-500/40 bg-red-500/10 text-red-400 font-mono text-xs flex items-center gap-2"
+                  className="p-3 border border-red-500/40 bg-red-500/10 text-red-400 font-mono text-xs flex flex-wrap items-center justify-between gap-2"
                 >
-                  <FiAlertCircle className="text-red-400 shrink-0" size={15} />
-                  <span>{errorMessage || "Something went wrong. Please try again."}</span>
+                  <div className="flex items-center gap-2">
+                    <FiAlertCircle className="text-red-400 shrink-0" size={15} />
+                    <span>{errorMessage || "Something went wrong. Please try again."}</span>
+                  </div>
+                  <a
+                    href="mailto:niranjankumar11082005@gmail.com"
+                    className="underline hover:text-text shrink-0 font-semibold"
+                  >
+                    Email directly &rarr;
+                  </a>
                 </div>
               )}
             </div>
